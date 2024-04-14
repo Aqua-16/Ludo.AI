@@ -302,5 +302,5 @@ class StateSpace():
                 self.updateStarAction(current_player, piece, dice)
                 self.updateGlobeAction(current_player, piece, dice)
                 self.updateProtectAction(current_player, piece, dice)
-                self.updateKillAction(current_player, piece, dice, kill_list)
+                self.updateKillAction(current_player, piece, dice, killList)
                 self.updateMoveAction(current_player, piece, dice)
