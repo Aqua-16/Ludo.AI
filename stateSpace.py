@@ -284,3 +284,23 @@ class StateSpace():
                 continue
             if self.updateMoveAction(current_player, piece, dice):
                 continue
+            
+    def getPossibleActions(self, players, current_player, pieces_to_move):
+        
+        self.updatePlayerPositions(players)
+        self.action_table_player.reset()
+        player = players[current_player]
+        (killList, dieList, enemyList) = self.getEnemyList(player)
+        self.enemyList = enemyList
+        
+        for piece in pieces_to_move:
+            for dice in range(1,6):
+                self.setPlayerState(current_player, piece)
+                self.updateBeginAction(current_player, piece, dice)
+                self.checkGoalZone(current_player, piece, dice)
+                self.updateDieAction(current_player, piece, dice, dieList)
+                self.updateStarAction(current_player, piece, dice)
+                self.updateGlobeAction(current_player, piece, dice)
+                self.updateProtectAction(current_player, piece, dice)
+                self.updateKillAction(current_player, piece, dice, kill_list)
+                self.updateMoveAction(current_player, piece, dice)
