@@ -86,3 +86,6 @@ class Rewards():
             state, action = self.getStateAction(maxVal, q_table_options)
             
         return (state, action)
+    
+    def getQTable(self):
+        return self.q_table

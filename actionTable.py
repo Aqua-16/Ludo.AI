@@ -25,6 +25,9 @@ class ActionTable():
     def getActionTable(self):
         return self.action_table
     
+    def getMoveTable(self):
+        return self.piece_to_move
+    
     def getPieceToMove(self, state, action):
         if (state < 0 or action < 0):
             return -1
