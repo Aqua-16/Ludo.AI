@@ -8,7 +8,6 @@ there_is_a_winner = False
 
 while not there_is_a_winner:
     (dice, move_pieces, player_pieces, enemy_pieces, player_is_a_winner, there_is_a_winner), player_i = g.get_observation()
-
     enviroment_image_rgb = g.render_environment() # RGB image of the enviroment
     enviroment_image_bgr = cv2.cvtColor(enviroment_image_rgb, cv2.COLOR_RGB2BGR)
     enviroment_image_bgr = cv2.resize(enviroment_image_bgr, (800,800), interpolation = cv2.INTER_LINEAR)

@@ -102,7 +102,7 @@ def plot(win_rate, epsilon_history):
     
     plt.show()
     
-def play(agent_file, no_of_opponents):
+def test(agent_file, no_of_opponents):
     weights = np.load(agent_file)
     action_table = weights['action_table']
     q_table = weights['q_table']
@@ -154,4 +154,4 @@ if __name__ == '__main__':
     
     win_rate, epsilon_history = learn(episodes, 2, epsilon, e_decay, learning_rate, gamma)
     plot(win_rate, epsilon_history)
-    #play('weights.npz', 2)
+    test('weights.npz', 2)
