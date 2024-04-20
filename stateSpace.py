@@ -87,7 +87,7 @@ class StateSpace():
         local_pos = self.getLocalPosition(player, piece) + dice
         global_pos = self.getGlobalPosition(player, piece) + dice
         is_protected = len(np.where(self.local_player_position[player].pieces == local_pos)[0]) > 1
-        if global_pos in self.globe_positions_global or local_pos in self.globe_positions_local:
+        if global_pos in self.globe_positions_global or local_pos in self.globe_position_local:
             return True
         # check if piece is in goal zone
         if local_pos >= 53:

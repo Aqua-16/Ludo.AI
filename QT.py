@@ -14,7 +14,6 @@ class Rewards():
         self.lr = lr
         self.gamma = gamma
         self.epsilon = epsilon
-        self.max_reward = 0
         
         VERY_BAD = -1.0
         BAD = -0.5
@@ -60,7 +59,6 @@ class Rewards():
         Q = self.q_table[state,action]
         
         delta_Q = self.lr * (reward + self.gamma * Q_ - Q)
-        self.max_reward += reward
         
         self.q_table[state, action] = Q + delta_Q
         

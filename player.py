@@ -9,11 +9,11 @@ from stateSpace import Action, State, StateSpace
 
 class Agent(StateSpace):
     
-    def __init__(self, agent_idx, gamma, lr):
+    def __init__(self, agent_idx, gamma, lr, epsilon):
         super().__init__()
         
         self.agent_idx = agent_idx
-        self.q_learning = Rewards(len(State), len(Action), gamma=gamma, lr=lr)
+        self.q_learning = Rewards(len(State), len(Action), gamma=gamma, lr=lr, epsilon = epsilon)
         
         self.state = None
         self.action = None
