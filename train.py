@@ -20,13 +20,16 @@ def learn(episodes, no_of_players, epsilon, e_decay, lr, gamma):
     
     if no_of_players == 4:
         game = ludopy.Game(ghost_players=[])
+        filename = 'weights4.npz'
     elif no_of_players == 3:
         game = ludopy.Game(ghost_players=[1])
+        filename = 'weights3.npz'
     else:
         game = ludopy.Game(ghost_players=[1,3])
+        filename = 'weights2.npz'
         
     player_1 = Agent(0, gamma, lr, epsilon) # Main Player
-    player_2 = Agent(1, gamma, lr, epsilon)
+    player_2 = Agent(2, gamma, lr, epsilon)
     
     for episode in range(episodes):
         there_is_a_winner = False
@@ -76,24 +79,38 @@ def learn(episodes, no_of_players, epsilon, e_decay, lr, gamma):
             
         player_1.q_learning.max_reward = 0
     game.save_hist_video("training_end_game.mp4")
-    np.savez('weights.npz', action_table = player_1.action_table_player.getActionTable(), q_table = player_1.q_learning.getQTable(), move_table = player_1.action_table_player.getMoveTable())
+    np.savez('filename', action_table = player_1.action_table_player.getActionTable(), q_table = player_1.q_learning.getQTable(), move_table = player_1.action_table_player.getMoveTable())
     return win_rate, epsilon_history
-def plot(win_rate, epsilon_history):
+def plot(win_rate1, win_rate2, win_rate3, epsilon_history):
     
     window_size = 20
-    win_rate = np.insert(win_rate, 0, 0)
+    win_rate1 = np.insert(win_rate1, 0, 0)
+    win_rate2 = np.insert(win_rate2, 0, 0)
+    win_rate2 = np.insert(win_rate2, 0, 0)
     
-    cumsum = np.cumsum(win_rate)
-    win_rate_moving_average = (cumsum[window_size:] - cumsum[:-window_size]) / window_size
+    cumsum = np.cumsum(win_rate1)
+    win_rate_moving_average1 = (cumsum[window_size:] - cumsum[:-window_size]) / window_size
+    
+    cumsum = np.cumsum(win_rate2)
+    win_rate_moving_average2 = (cumsum[window_size:] - cumsum[:-window_size]) / window_size
+    
+    cumsum = np.cumsum(win_rate3)
+    win_rate_moving_average3 = (cumsum[window_size:] - cumsum[:-window_size]) / window_size
         
     moving_average_list = [0] * window_size
-    win_rate_moving_average = moving_average_list + win_rate_moving_average.tolist()
+    win_rate_moving_average1 = moving_average_list + win_rate_moving_average1.tolist()
+    win_rate_moving_average2 = moving_average_list + win_rate_moving_average2.tolist()
+    win_rate_moving_average3 = moving_average_list + win_rate_moving_average3.tolist()
     
     fig, axes = plt.subplots(1, 2)
+    plt.subplots_adjust(wspace=0.5)
     axes[0].set_title("Win Rates")
     axes[0].set_xlabel("Episodes")
     axes[0].set_ylabel("Win Rate %")
-    axes[0].plot(win_rate_moving_average, color = 'red')
+    axes[0].plot(win_rate_moving_average1, color = 'red', label = "1 Opponent")
+    axes[0].plot(win_rate_moving_average2, color = 'blue', label = "2 Opponents")
+    axes[0].plot(win_rate_moving_average3, color = 'green', label = "3 Opponents")
+    plt.legend()
     
     axes[1].set_title("Epsilon Decay")
     axes[1].set_xlabel("Episodes")
@@ -152,6 +169,8 @@ if __name__ == '__main__':
     e_decay = 0.05
     episodes = 300
     
-    win_rate, epsilon_history = learn(episodes, 2, epsilon, e_decay, learning_rate, gamma)
-    plot(win_rate, epsilon_history)
-    test('weights.npz', 2)
+    win_rate1, epsilon_history = learn(episodes, 2, epsilon, e_decay, learning_rate, gamma)
+    win_rate2, epsilon_history = learn(episodes, 3, epsilon, e_decay, learning_rate, gamma)
+    win_rate3, epsilon_history = learn(episodes, 4, epsilon, e_decay, learning_rate, gamma)
+    plot(win_rate1, win_rate2, win_rate3, epsilon_history)
+    test('weights2.npz', 2)
