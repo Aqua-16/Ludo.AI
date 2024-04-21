@@ -79,7 +79,7 @@ def learn(episodes, no_of_players, epsilon, e_decay, lr, gamma):
             
         player_1.q_learning.max_reward = 0
     game.save_hist_video("training_end_game.mp4")
-    np.savez('filename', action_table = player_1.action_table_player.getActionTable(), q_table = player_1.q_learning.getQTable(), move_table = player_1.action_table_player.getMoveTable())
+    np.savez(filename, action_table = player_1.action_table_player.getActionTable(), q_table = player_1.q_learning.getQTable(), move_table = player_1.action_table_player.getMoveTable())
     return win_rate, epsilon_history
 def plot(win_rate1, win_rate2, win_rate3, epsilon_history):
     
