@@ -1,11 +1,11 @@
-# LudoAI
+# Ludo.AI
 
 ## Introduction
 
-LudoAI is a **Reinforcement Learning Project**, aimed at creating artificially intelligent agents that are capable of autonomously playing against other autonomous agents, as well as human opponents.
+Ludo.AI is a **Reinforcement Learning Project**, aimed at creating artificially intelligent agents that are capable of autonomously playing against other autonomous agents, as well as human opponents.
 
 
-https://github.com/Aqua-16/LudoAI/assets/123102778/d403b164-0a42-43bc-80cb-35491f37d29d
+https://github.com/Aqua-16/Ludo.AI/assets/123102778/d403b164-0a42-43bc-80cb-35491f37d29d
 
 
 ## Installation and Dependencies
@@ -20,8 +20,8 @@ All requirements have been clearly mentioned in the `requirements.txt`. Just do 
 ```
 python -m venv ludo
 env_name\Scripts\activate
-git clone https://github.com/Aqua-16/LudoAI.git
-cd LudoAI
+git clone https://github.com/Aqua-16/Ludo.AI.git
+cd Ludo.AI
 pip install -r requirements.txt
 ```
 
@@ -38,9 +38,13 @@ python train.py
 The parameters currently set are done so after extensive tuning. But, feel free to change them and experiment with your own values. For reference, the training graphs are attached below. The AI has been trained against itself as well as agents with pseudo random movements.
 This allows it to capture a wider array of possible moves, both optimal and sub-optimal.
 
-![Figure_1](https://github.com/Aqua-16/LudoAI/assets/123102778/523779c0-16b4-45df-8054-d46514864f5f)
+![Figure_1](https://github.com/Aqua-16/Ludo.AI/assets/123102778/523779c0-16b4-45df-8054-d46514864f5f)
 
-As can be seen from the figure, even against 3 opponents, the model achieves a win rate above **50%**. With a single opponent though, the AI wins nearly **75%** of the time.
+As can be seen from the figure, even against 3 opponents, the model achieves a win rate near **50%**. With a single opponent though, the AI wins nearly **75%** of the time.
+
+![Figure_3](https://github.com/Aqua-16/Ludo.AI/assets/123102778/97e90537-caf2-4fdb-843e-e1634d1d35f1)
+
+With adaptive learning and adjusted epsilon decay, we achieve a win rate of **55%** against 3 opponents, giving us a net **5%** boost compared to before.
 
 ## Gameplay
 
