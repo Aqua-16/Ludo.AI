@@ -65,6 +65,9 @@ class Rewards():
     def updateEpsilon(self, new_epsilon):
         self.epsilon = new_epsilon
         
+    def updateLearningRate(self):
+        self.lr = self.lr * 0.9
+        
     def getStateAction(self, value, array):
         if np.isnan(value):
             return (-1, -1)

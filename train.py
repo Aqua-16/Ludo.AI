@@ -76,6 +76,7 @@ def learn(episodes, no_of_players, epsilon, e_decay, lr, gamma):
         if((episode+1) % 50 == 0):
             print("Episode : ", (episode+1))
             print(f"Win Rate: {np.round(elo, 1)}%")
+            player_1.q_learning.updateLearningRate()
             
         player_1.q_learning.max_reward = 0
     game.save_hist_video("training_end_game.mp4")
@@ -166,8 +167,8 @@ if __name__ == '__main__':
     learning_rate = 0.01
     gamma = 0.7
     epsilon = 0.9
-    e_decay = 0.05
-    episodes = 300
+    e_decay = 0.03
+    episodes = 1000
     
     win_rate1, epsilon_history = learn(episodes, 2, epsilon, e_decay, learning_rate, gamma)
     win_rate2, epsilon_history = learn(episodes, 3, epsilon, e_decay, learning_rate, gamma)

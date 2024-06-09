@@ -89,4 +89,4 @@ def play(no_of_opponents, file):
     
 if __name__ == '__main__':
     n = int(input("How many opponents would you like to play against?\t"))
-    play(n, 'prime_weights.npz')
+    play(n, f'prime_weights{n+1}.npz')
