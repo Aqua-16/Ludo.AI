@@ -40,7 +40,11 @@ This allows it to capture a wider array of possible moves, both optimal and sub-
 
 ![Figure_1](https://github.com/Aqua-16/Ludo.AI/assets/123102778/523779c0-16b4-45df-8054-d46514864f5f)
 
-As can be seen from the figure, even against 3 opponents, the model achieves a win rate above **50%**. With a single opponent though, the AI wins nearly **75%** of the time.
+As can be seen from the figure, even against 3 opponents, the model achieves a win rate near **50%**. With a single opponent though, the AI wins nearly **75%** of the time.
+
+![Figure_3](https://github.com/Aqua-16/Ludo.AI/assets/123102778/97e90537-caf2-4fdb-843e-e1634d1d35f1)
+
+With adaptive learning and adjusted epsilon decay, we achieve a win rate of **55%** against 3 opponents, giving us a net **5%** boost compared to before.
 
 ## Gameplay
 
